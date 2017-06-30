@@ -1,0 +1,161 @@
+﻿<UserControl x:Class="CommandTestAutomation.Views.TestLabUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             xmlns:local="clr-namespace:CommandTestAutomation.ViewModels"
+             xmlns:converters="clr-namespace:CommandTestAutomation.Helpers"
+             xmlns:uControls="clr-namespace:CommandTestAutomation.Views">
+    <UserControl.Resources>
+        <converters:RowNumberConverter x:Key="rowToIndexConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <TreeView 
+                        ItemsSource="{Binding  Path=ProjectViewModels}"  
+                        SelectedValuePath="TestCaseViewModel"
+                        Width="150" x:Name="myTestLabTree" >
+                <TreeView.ItemContainerStyle>
+                    <!--  This Style binds a TreeViewItem to a TreeViewItemViewModel. -->
+                    <Style TargetType="{x:Type TreeViewItem}">
+                        <Setter Property="IsExpanded" Value="{Binding IsNodeExpanded, Mode=TwoWay}" />
+                        <Setter Property="IsSelected" Value="{Binding IsNodeSelected, Mode=TwoWay}" />
+                        <Setter Property="FontWeight" Value="Normal" />
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="FontWeight" Value="Bold" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TreeView.ItemContainerStyle>
+
+                <TreeView.Resources>
+                    <HierarchicalDataTemplate 
+                                DataType="{x:Type local:ProjectViewModel}" 
+                                ItemsSource="{Binding Children}" 
+                                >
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel.ContextMenu>
+                                <ContextMenu Name="myTestCaseMenu" DataContext="{Binding PlacementTarget,RelativeSource={RelativeSource Self}}">
+                                    <MenuItem Header="Run TestCases" Command="{Binding DataContext.TestRunClickCommand}"
+                                              CommandParameter="{Binding}">
+                                    </MenuItem>                                    
+                                </ContextMenu>
+                            </StackPanel.ContextMenu>
+                            <Image Width="16" Height="16" Margin="3,0" Source="..\Images\Region.png" />
+                            <TextBlock Text="{Binding ProjectName}" />
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+
+                    <HierarchicalDataTemplate 
+                              DataType="{x:Type local:TestCaseViewModel}" 
+                              ItemsSource="{Binding Children}"                             
+                              >
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel.ContextMenu>
+                                <ContextMenu Name="myTestCaseMenu" DataContext="{Binding PlacementTarget,RelativeSource={RelativeSource Self}}">
+                                    <MenuItem Header="Run TestCase" Command="{Binding DataContext.TestRunClickCommand}" CommandParameter="{Binding}">
+                                    </MenuItem>
+                                   
+                                </ContextMenu>
+                            </StackPanel.ContextMenu>
+                            <Image Width="16" Height="16" Margin="3,0" Source="..\Images\State.png" />
+                            <TextBlock Text="{Binding TestCaseName}" x:Name="myTestLabTreeItem" />
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+
+                </TreeView.Resources>
+            </TreeView>
+            <StackPanel >
+                <StackPanel>
+                    <Button HorizontalAlignment="Right" x:Name="btnRun" Height="20" Width="40"  Content="Run"                          
+                            Command="{Binding ElementName=myTestLabTree, Path=SelectedItem.TestRunClickCommand}" >
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <!--<DataTrigger Binding="{Binding SelectedItems.Count,ElementName=dGridTestSteps}"
+                                                Value="0">
+                                        <Setter Property="IsEnabled"   Value="False" />
+                                    </DataTrigger>-->
+                                    <!--IsEnabled="{Binding ElementName=YourDataGrid, Path=SelectedItems.Count}"-->
+                                    <DataTrigger Binding="{Binding ElementName=myTestLabTree, Path=SelectedItem}" Value="{x:Null}">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                        <Setter Property="Opacity" Value=".5" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                    </Button>
+                </StackPanel>
+               
+                <DataGrid x:Name="dGridTestSteps" CanUserDeleteRows="False" Width="900"
+                          CanUserAddRows="False" CanUserResizeColumns="True" CanUserResizeRows="True"                           
+                          AutoGenerateColumns="False"
+                          SelectedItem="{Binding SelectedTestStep, Mode=TwoWay}" 
+                          ItemsSource="{Binding ElementName=myTestLabTree, Path=SelectedItem.TestStepsData, Mode=TwoWay}" 
+                          >
+                    <DataGrid.RowHeaderStyle>
+                        <Style TargetType="DataGridRowHeader">
+                            <Setter Property="Width">
+                                <Setter.Value>20</Setter.Value>
+                            </Setter>
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource rowToIndexConverter}">
+                                        <Binding />
+                                        <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DataGrid.RowHeaderStyle>
+                    <DataGrid.Columns>                        
+                        <DataGridTemplateColumn Header="Field" Width="*" IsReadOnly="True">
+                            <DataGridTemplateColumn.CellTemplate >
+                                <DataTemplate>
+                                    <TextBlock  Text="{Binding TestStepFieldItemName}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <ComboBox ItemsSource="{Binding Path=UIFields}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>                                           
+                                                    <TextBlock Text="{Binding Path=UIFieldName}" />                                               
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Action" Width="*" IsReadOnly="True">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding TestStepFieldActionName}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <ComboBox Height="22" ItemsSource="{Binding Path=UIFieldActions}" SelectedItem="{Binding TestStepFieldActionName}"></ComboBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn  IsReadOnly="True" Header="Value" Width="*" Binding="{Binding TestStepFieldActionValue}" />
+                        <DataGridTextColumn  Header="Status"   Binding="{Binding TestStepStatus}" Width="*" />
+                        <!--<DataGridTemplateColumn Header="Status" Width="*" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox  Text="{Binding Path=TestStepStatus,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>-->  
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

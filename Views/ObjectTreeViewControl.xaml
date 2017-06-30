@@ -1,0 +1,193 @@
+﻿<UserControl x:Class="CommandTestAutomation.Views.ObjectTreeViewControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+               xmlns:converters="clr-namespace:CommandTestAutomation.Helpers"
+              xmlns:interfaces="clr-namespace:CommandTestAutomation.Interfaces"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+
+        <converters:BindingProxy
+                 x:Key="DataContextProxy"
+                 Data="{Binding}" />
+
+        <converters:EnumToStringConverter x:Key="EnumToStringConverter" />
+        <converters:PathConverter x:Key="iconConverter"/>
+        <converters:RowNumberConverter x:Key="rowToIndexConverter" />
+        <converters:ContextMenuConverter x:Key="contextMenuConverter" />
+        <converters:IsNullConverter x:Key="isNullConverter" />
+
+    </UserControl.Resources>
+    <Grid>
+      
+        <!--// ItemsSource="{Binding  Path=ObjectMapData}"-->
+        <!--<converters:ExtendedTreeView     ItemsSource="{Binding  Path=ObjectMapData}"
+                                         Width="150" x:Name="myUIObjectTree" 
+                                         SelectedItem_ = "{Binding SelectedFieldItem, Mode=TwoWay}"
+                 >
+
+                <TreeView.Resources>
+                <DataTemplate x:Key="NormalTemplate">
+                    <TextBlock Text="{Binding NodeName}" />
+                </DataTemplate>
+                <DataTemplate x:Key="EditTemplate">
+                    <TextBox Text="{Binding NodeName, UpdateSourceTrigger=LostFocus}" />
+                </DataTemplate>
+                --><!--  Begin Context Menu  --><!--
+                <ContextMenu x:Key="ProjectMenu" >
+                    <MenuItem Command="{Binding AddFolderClickCommand}" Header="Add Folder"/>
+                    <MenuItem Command="{Binding EditProjectClickCommand}" Header="Edit"/>
+                </ContextMenu>
+                <ContextMenu x:Key="FolderMenu" >
+                    <MenuItem Command="{Binding AddFolderClickCommand}" Header="Add Folder"/>
+                    <MenuItem Command="{Binding AddUIObjectClickCommand}" Header="Add UI Object"/>
+                    <MenuItem Command="{Binding EditFolderClickCommand}" Header="Edit"/>
+                </ContextMenu>
+                <ContextMenu x:Key="UIObjectMenu" >
+                    <MenuItem Command="{Binding EditUIObjectClickCommand}" Header="Edit"/>
+                </ContextMenu>
+                <converters:ContextMenuConverter x:Key="contextMenuConverter" 
+                                            ProjectMenu="{StaticResource ProjectMenu}"
+                                            FolderMenu="{StaticResource FolderMenu}"
+                                            UIObjectMenu="{StaticResource UIObjectMenu}"/>
+            </TreeView.Resources>
+            <TreeView.ItemContainerStyle>
+                --><!--  This Style binds a TreeViewItem to a TreeViewItemViewModel. --><!--
+
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="ContextMenu" Value="{Binding Converter={StaticResource contextMenuConverter}}"/>
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                    <Setter Property="FontWeight" Value="Normal" />
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TreeView.ItemContainerStyle>
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}" DataType="{x:Type interfaces:INode}">
+                    --><!--<TreeViewItem Header="{Binding NodeName}"/>-->
+                    <!--<TextBox Text="{Binding NodeName, UpdateSourceTrigger=LostFocus}" />--><!--
+                    <ContentPresenter Content="{Binding}">
+                        <ContentPresenter.Style>
+                            <Style TargetType="{x:Type ContentPresenter}">
+                                <Setter Property="ContentTemplate"
+                                            Value="{StaticResource   NormalTemplate}"/>
+                                <Style.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding IsEditEnabled }"  Value="True"
+                                        
+                                        >
+                                        --><!--Binding="{Binding IsSelected,
+                                                      RelativeSource={RelativeSource
+                                                      FindAncestor,  AncestorType={x:Type TreeViewItem}}}"  Value="True">--><!--
+                                        <Setter Property="ContentTemplate"
+                                                    Value="{StaticResource   EditTemplate}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContentPresenter.Style>
+                    </ContentPresenter>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </converters:ExtendedTreeView>-->
+        <converters:ExtendedTreeView     
+            ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                    AncestorType={x:Type UserControl}}, Path=DataContext.ObjectMapData}"
+            Width="200"  x:Name="myUIObjectTree" 
+            SelectedItem_ = "{Binding SelectedTestObjectTreeViewItem, Mode=TwoWay}">
+
+
+            <TreeView.Resources>
+                <DataTemplate x:Key="NormalTemplate">
+                    <StackPanel Orientation="Horizontal">
+                        
+                        <Image Width="16" Height="16" Margin="0,0,3,0" x:Name="iconTreeItem" />
+                        <TextBlock Text="{Binding NodeName}" />
+                    </StackPanel>
+
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=IsSelected,RelativeSource={RelativeSource AncestorType=TreeViewItem},Converter={StaticResource isNullConverter}}" Value="False">
+                            <Setter TargetName="iconTreeItem" Property="Source">
+                                <Setter.Value>
+                                    <Binding  Converter="{StaticResource iconConverter}">
+                                        <Binding.FallbackValue>
+                                            <ImageSource>
+                                                ../Images/Unknown.png
+                                            </ImageSource>
+                                        </Binding.FallbackValue>
+                                    </Binding>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+                <DataTemplate x:Key="EditTemplate">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="16" Height="16" Margin="0,0,3,0" SnapsToDevicePixels="True" Stretch="None" x:Name="iconTreeItem" />
+                        <TextBox Text="{Binding NodeName, UpdateSourceTrigger=LostFocus}" />
+                    </StackPanel>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=NodeType}" Value="Element">
+                            <Setter TargetName="iconTreeItem" Property="Source">
+                                <Setter.Value>
+                                    <Binding Path="Name" Converter="{StaticResource iconConverter}">
+                                        <Binding.FallbackValue>
+                                            <ImageSource>
+                                                ../Images/Unknown.png
+                                            </ImageSource>
+                                        </Binding.FallbackValue>
+                                    </Binding>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+             
+            </TreeView.Resources>
+            <TreeView.ItemContainerStyle>
+                <!--  This Style binds a TreeViewItem to a TreeViewItemViewModel. -->
+
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                    <Setter Property="FontWeight" Value="Normal" />
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TreeView.ItemContainerStyle>
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}" DataType="{x:Type interfaces:INode}">
+                    <!--<TreeViewItem Header="{Binding NodeName}"/>-->
+                    <!--<TextBox Text="{Binding NodeName, UpdateSourceTrigger=LostFocus}" />-->
+                    <ContentPresenter Content="{Binding}">
+                        <ContentPresenter.Style>
+                            <Style TargetType="{x:Type ContentPresenter}">
+                                <Setter Property="ContentTemplate"
+                                            Value="{StaticResource   NormalTemplate}"/>
+                                <Style.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding IsEditEnabled }"  Value="True"                                       
+                                        >
+                                        <Setter Property="ContentTemplate"
+                                                    Value="{StaticResource   EditTemplate}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContentPresenter.Style>
+                    </ContentPresenter>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </converters:ExtendedTreeView>
+
+    </Grid>
+</UserControl>

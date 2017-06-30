@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CommandTestAutomation.Assets"                    
+                    xmlns:converters="clr-namespace:CommandTestAutomation.Helpers"
+                    >
+    <converters:ContextMenuConverter x:Key="contextMenuConverter"/>
+    <Style x:Key="treeViewDictionary" TargetType="{x:Type TreeViewItem}" >
+        <Setter Property="ContextMenu" Value="{Binding Converter={StaticResource contextMenuConverter}}"/>
+        <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+        <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+
+        <Setter Property="FontWeight" Value="Normal" />
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="FontWeight" Value="Bold" />
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,167 @@
+﻿    <Window x:Class="CommandTestAutomation.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="βTest"  Height="350" Width="525"
+        xmlns:local    ="clr-namespace:CommandTestAutomation.ViewModels"
+        xmlns:uControls="clr-namespace:CommandTestAutomation.Views"
+        WindowState="Maximized"        
+             xmlns:converters="clr-namespace:CommandTestAutomation.Helpers"
+            
+        Icon="../Images/Application.png">
+    <Window.Resources>
+        <converters:EnumToStringConverter x:Key="EnumToStringConverter" />
+    </Window.Resources>
+    <DockPanel>       
+          
+                <Menu DockPanel.Dock="Top"  >
+                    <MenuItem Header="_File">
+                        <MenuItem Header="_Exit" />
+                    </MenuItem>
+
+                    <MenuItem Header="_Tools">
+                        <!--<MenuItem Header="Reports">
+                        <MenuItem.Icon>
+                            <Image Source="/XSoftArt.WPFengine;component/Images/export32x32xp.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>-->
+                        <MenuItem Header="_Manage users">
+                            <!--<MenuItem.Icon>
+                        <Image Source="/WpfTutorialSamples;component/Images/user.png" />
+                    </MenuItem.Icon>--> f
+                        </MenuItem>
+                        <MenuItem Header="_Show groups" IsCheckable="True" IsChecked="True" />
+                    </MenuItem>
+                    <MenuItem Header="_Help">
+                        <MenuItem Header="_About BetaTest"  Command="{Binding AboutClickCommand}"/>
+                    </MenuItem>
+                </Menu>
+
+                <StackPanel Orientation="Vertical">
+            <!--second level menu items-->
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="150" Height="20" Text="Select Test DataSoruce"/>
+                <ComboBox  ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                AncestorType={x:Type Window}}, Path=DataContext.TestDataSources,Mode=TwoWay}" Width="150"
+                                               SelectedItem="{Binding DataContext.SelectedTestDataSource}"  >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock  Text="{Binding}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+            <Grid >
+                <TabControl TabStripPlacement="Left" >
+                    <TabControl.Resources>
+                        <Style TargetType="{x:Type TabPanel}">
+                            <Setter Property="HorizontalAlignment" Value="Center"  />
+                            <Setter Property="VerticalAlignment" Value="Top"  />
+                            <Setter Property="Background" Value="Black"/>
+                        </Style>
+                        <Style TargetType="TabItem">
+                            <Setter Property="Background" Value="Black"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Width" Value="{Binding    
+                         Path=ActualWidth,    
+                         RelativeSource={RelativeSource    
+                        Mode=FindAncestor,    
+                        AncestorType={x:Type TabPanel}}}"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="TabItem">
+                                        <Border Name="Border" BorderThickness="2,2,2,2" BorderBrush="Gainsboro" CornerRadius="4,4,0,0" Margin="2,0">
+                                            <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Stretch"
+                                        HorizontalAlignment="Left"
+                                        ContentSource="Header"    
+                                            
+                                        Margin="15,15"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter TargetName="Border" Property="Background" Value="LightSkyBlue" />
+                                            </Trigger>
+                                            <Trigger Property="IsSelected" Value="False">
+                                                <Setter TargetName="Border" Property="Background" Value="GhostWhite" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </TabControl.Resources>
+
+                    <TabItem HorizontalAlignment="Center">
+                        <TabItem.Header>
+                            <StackPanel>
+                                <Image Source="/Images/TestCase.png" Width="40" Height="40"/>
+                                <TextBlock Text="Test Cases" FontSize="15" />
+                            </StackPanel>
+                        </TabItem.Header>
+                        <TabItem.Content>
+                            <uControls:TestPlanUserControl/>
+                        </TabItem.Content>
+
+                    </TabItem>
+
+                    <TabItem  HorizontalAlignment="Center">
+                        <TabItem.Header>
+                            <StackPanel>
+                                <Image Source="/Images/Field.png" Width="40" Height="40"/>
+                                <TextBlock Text="UI Objects" FontSize="15" />
+                            </StackPanel>
+
+                        </TabItem.Header>
+                        <TabItem.Content>
+                            <uControls:ObjectRepositoryControl/>
+                        </TabItem.Content>
+
+                    </TabItem>
+
+                    <TabItem  HorizontalAlignment="Center">
+                        <TabItem.Header>
+                            <StackPanel>
+                                <Image Source="/Images/Execute.png" Width="40" Height="40"/>
+                                <TextBlock Text="Execution Lab" FontSize="15" />
+                            </StackPanel>
+
+                        </TabItem.Header>
+                        <TabItem.Content>
+                            <uControls:TestLabUserControl/>
+                        </TabItem.Content>
+
+                    </TabItem>
+
+                    <TabItem  HorizontalAlignment="Center">
+                        <TabItem.Header>
+                            <StackPanel>
+                                <Image Source="/Images/Report.png" Width="40" Height="40"/>
+                                <TextBlock Text="Execution Reports" FontSize="15" />
+                            </StackPanel>
+
+                        </TabItem.Header>
+                        <TabItem.Content>
+                            <ContentControl>Nothing yet.Keep watching this space.</ContentControl>
+                        </TabItem.Content>
+
+                    </TabItem>
+
+                    <TabItem  HorizontalAlignment="Center">
+                        <TabItem.Header>
+                            <StackPanel>
+                                <Image Source="/Images/Variable.png" Width="40" Height="40"/>
+                                <TextBlock Text="Application Variables" FontSize="15" />
+                            </StackPanel>
+
+                        </TabItem.Header>
+                        <TabItem.Content>
+                            <uControls:SystemVariableControl/>
+                        </TabItem.Content>
+
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </StackPanel>
+       
+    </DockPanel>
+</Window>

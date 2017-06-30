@@ -1,0 +1,193 @@
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\PortableAutomation.exe.config
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\PortableAutomation.exe
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\PortableAutomation.pdb
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\Xceed.Wpf.AvalonDock.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\Xceed.Wpf.DataGrid.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\de\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\en\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\es\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\it\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\ru\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\Interop.SHDocVw.dll
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\CommandTestAutomation.csproj.ResolveComReference.cache
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\Views\UIFieldTreeViewControl.baml
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\Views\ObjectRepositoryControl.g.cs
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\Views\TestLabUserControl.g.cs
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\Views\TestPlanUserControl.g.cs
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\Views\MainWindow.g.cs
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\Views\UIFieldTreeViewControl.g.cs
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\App.g.cs
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\PortableAutomation_MarkupCompile.cache
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\PortableAutomation_MarkupCompile.lref
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\Views\ObjectRepositoryControl.baml
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\Views\TestLabUserControl.baml
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\Views\TestPlanUserControl.baml
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\Views\MainWindow.baml
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\PortableAutomation.g.resources
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\PortableAutomation.Properties.Resources.resources
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\CommandTestAutomation.FormControls.FieldTreeViewControl.resources
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\CommandTestAutomation.csproj.GenerateResource.Cache
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\PortableAutomation.exe
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\PortableAutomation.pdb
+C:\Users\gopim\Documents\Gopi Work\PortableAutomation\PortableAutomation\obj\Debug\CommandTestAutomation.csprojResolveAssemblyReference.cache
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\PortableAutomation.exe.config
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\PortableAutomation.exe
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\PortableAutomation.pdb
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\EFCodeFirstAutomation.Data.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\EFCodeFirstAutomation.DataAccess.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\EntityFramework.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\Xceed.Wpf.AvalonDock.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\Xceed.Wpf.DataGrid.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\EFCodeFirstAutomation.DataAccess.pdb
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\EFCodeFirstAutomation.Data.pdb
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\EntityFramework.xml
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\de\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\en\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\es\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\it\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\ru\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\CommandTestAutomation.csprojResolveAssemblyReference.cache
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Interop.SHDocVw.dll
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\CommandTestAutomation.csproj.ResolveComReference.cache
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Dialogs\About.g.cs
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\ObjectRepositoryControl.g.cs
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\SystemVariableControl.g.cs
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\TestLabUserControl.g.cs
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\TestPlanUserControl.g.cs
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\MainWindow.g.cs
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\App.g.cs
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\PortableAutomation_MarkupCompile.cache
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\PortableAutomation_MarkupCompile.lref
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\App.baml
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Assets\ButtonDictionary.baml
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Assets\ContextMenuDictionary.baml
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Assets\DataGridResourceDictionary.baml
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Assets\ImageDictionary.baml
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Assets\TextBoxDictionary.baml
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Assets\TreeViewDictionary.baml
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Assets\WindowDictionary.baml
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Dialogs\About.baml
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\ObjectRepositoryControl.baml
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\SystemVariableControl.baml
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\TestLabUserControl.baml
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\TestPlanUserControl.baml
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\MainWindow.baml
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\PortableAutomation.g.resources
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\PortableAutomation.Properties.Resources.resources
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\CommandTestAutomation.csproj.GenerateResource.Cache
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\PortableAutomation.exe
+C:\Users\gopim\Documents\Gopi Work\CommandTesttAutomation\PortableAutomation\obj\Debug\PortableAutomation.pdb
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\PortableAutomation.exe.config
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Interop.SHDocVw.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\CommandTestAutomation.csproj.ResolveComReference.cache
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\PortableAutomation.exe
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\PortableAutomation.pdb
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\PortableAutomation.exe
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\PortableAutomation.pdb
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\EFCodeFirstAutomation.Data.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\EFCodeFirstAutomation.DataAccess.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\EntityFramework.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\EntityFramework.SqlServer.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\System.Windows.Interactivity.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\Xceed.Wpf.AvalonDock.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\Xceed.Wpf.DataGrid.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\EFCodeFirstAutomation.DataAccess.pdb
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\EFCodeFirstAutomation.Data.pdb
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\EntityFramework.xml
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\EntityFramework.SqlServer.xml
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\de\System.Windows.Interactivity.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\en\System.Windows.Interactivity.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\es\System.Windows.Interactivity.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\it\System.Windows.Interactivity.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\ru\System.Windows.Interactivity.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\CommandTestAutomation.csprojResolveAssemblyReference.cache
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Dialogs\About.g.cs
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\ObjectRepositoryControl.g.cs
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\SystemVariableControl.g.cs
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\TestLabUserControl.g.cs
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\TestPlanUserControl.g.cs
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\MainWindow.g.cs
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\App.g.cs
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\PortableAutomation_MarkupCompile.cache
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\PortableAutomation_MarkupCompile.lref
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\App.baml
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Assets\ButtonDictionary.baml
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Assets\ContextMenuDictionary.baml
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Assets\DataGridResourceDictionary.baml
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Assets\ImageDictionary.baml
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Assets\TextBoxDictionary.baml
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Assets\TreeViewDictionary.baml
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Assets\WindowDictionary.baml
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Dialogs\About.baml
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\ObjectRepositoryControl.baml
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\SystemVariableControl.baml
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\TestLabUserControl.baml
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\TestPlanUserControl.baml
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\Views\MainWindow.baml
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\PortableAutomation.g.resources
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\PortableAutomation.Properties.Resources.resources
+C:\GopiWork\CommandTesttAutomation\PortableAutomation\obj\Debug\CommandTestAutomation.csproj.GenerateResource.Cache

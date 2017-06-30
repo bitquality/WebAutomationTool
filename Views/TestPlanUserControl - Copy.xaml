@@ -1,0 +1,190 @@
+﻿<UserControl x:Class="CommandTestAutomation.Views.TestPlanUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             xmlns:local="clr-namespace:CommandTestAutomation.ViewModels"
+             xmlns:converters="clr-namespace:CommandTestAutomation.Helpers"
+             xmlns:behaviors = "clr-namespace:CommandTestAutomation.Helpers"
+             xmlns:uControls="clr-namespace:CommandTestAutomation.Views"
+             xmlns:interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity">
+    
+    <!--<UserControl.DataContext>
+        <local:ObjectRepositoryViewModel x:Name="myORModel"/>
+    </UserControl.DataContext>-->
+    <UserControl.Resources>        
+        <converters:RowNumberConverter x:Key="rowToIndexConverter" />
+    </UserControl.Resources>
+    <DockPanel>
+        <StackPanel Orientation="Horizontal">
+            <TreeView 
+                ItemsSource="{Binding  Path=ProjectViewModels}"  SelectedValuePath="local:TestCaseViewModel"
+                Width="150" x:Name="myTestPlanTree" >
+                <TreeView.ItemContainerStyle>
+                    <!--  This Style binds a TreeViewItem to a TreeViewItemViewModel. -->
+                    <Style TargetType="{x:Type TreeViewItem}">
+                        <Setter Property="IsExpanded" Value="{Binding IsNodeExpanded, Mode=TwoWay}" />
+                        <Setter Property="IsSelected" Value="{Binding IsNodeSelected, Mode=TwoWay}" />
+                        <Setter Property="FontWeight" Value="Normal" />
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="FontWeight" Value="Bold" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TreeView.ItemContainerStyle>
+
+                <TreeView.Resources>
+                    <HierarchicalDataTemplate 
+                    DataType="{x:Type local:ProjectViewModel}" 
+                    ItemsSource="{Binding Children}" 
+                    >
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel.ContextMenu>
+                                <ContextMenu Name="myProjectChildMenu" DataContext="{Binding PlacementTarget,RelativeSource={RelativeSource Self}}">
+                                    <MenuItem Header="Add TestCase" Command="{Binding DataContext.AddTestCaseCommand}" CommandParameter="{Binding}">
+                                    </MenuItem>
+                                    <MenuItem Header="Add Folder" Command="{Binding DataContext.AddFolderCommand}" CommandParameter="{Binding}">
+                                    </MenuItem>
+                                </ContextMenu>
+                            </StackPanel.ContextMenu>
+
+                            
+                            <Image Width="16" Height="16" Margin="3,0" Source="..\Images\Region.png" />
+                            <TextBlock Text="{Binding ProjectName}" />
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+
+                    <HierarchicalDataTemplate 
+                              DataType="{x:Type local:TestCaseViewModel}" 
+                              ItemsSource="{Binding Children}"                             
+                              >
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel.ContextMenu>
+                                <ContextMenu Name="myTestCaseMenu" DataContext="{Binding PlacementTarget,RelativeSource={RelativeSource Self}}">
+                                    
+                                    <MenuItem Header="Remove TestCase" Command="{Binding DataContext.RemoveTestCaseCommand}" CommandParameter="{Binding}">
+                                    </MenuItem>
+                                </ContextMenu>
+                            </StackPanel.ContextMenu>
+                            <Image Width="16" Height="16" Margin="3,0" Source="..\Images\State.png" />
+                            <TextBlock Text="{Binding TestCaseName}" x:Name="myTestCaseTreeItem" />
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+
+                </TreeView.Resources>
+            </TreeView>
+            <StackPanel>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button  x:Name="btnAddStep" Height="20" Width="60"  Content="Add Step" 
+                                Command="{Binding ElementName=myTestPlanTree, Path=SelectedItem.AddTestStepClickCommand}" />
+                    <Button  x:Name="btnSaveStep" Height="20" Width="60"  Content="Save Step" 
+                                Command="{Binding ElementName=myTestPlanTree, Path=SelectedItem.SaveTestStepClickCommand}" />
+                </StackPanel>
+                <DataGrid x:Name="myDataGridTestSteps" CanUserDeleteRows="True" Width="900"
+                          CanUserAddRows="False" CanUserResizeColumns="True" CanUserResizeRows="False"                                             
+                          SelectedItem="{Binding SelectedTestStep, Mode=TwoWay}" AutoGenerateColumns="False"                               
+                          ItemsSource="{Binding ElementName=myTestPlanTree, Path=SelectedItem.TestStepsData}" 
+                          EnableRowVirtualization ="False"  Margin="0,2,0.333,-2.333">
+                    <DataGrid.RowHeaderStyle>
+                        <Style TargetType="DataGridRowHeader">
+                            <Setter Property="Width">
+                                <Setter.Value>20</Setter.Value>
+                            </Setter>
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource rowToIndexConverter}">
+                                        <Binding />
+                                        <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DataGrid.RowHeaderStyle>
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Field" Width="*">
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <!--<uControls:UIFieldTreeViewControl x:Name="myFields"   />-->
+                                    <converters:ExtendedTreeView x:Name="myUITreeView" ItemsSource="{Binding UIFields,Mode=TwoWay}"
+                                                  SelectedItem_="{Binding SelectedFieldItem, Mode=TwoWay}"   >
+
+                                        <TreeView.Resources>
+                                            <Style TargetType="{x:Type TreeViewItem}">
+                                                <Setter Property="IsExpanded" Value="{Binding IsNodeExpanded, Mode=TwoWay}" />
+                                                <Setter Property="IsSelected" Value="{Binding IsNodeSelected, Mode=TwoWay}" />
+                                                <!-- Could also put IsNodeSelected here if we needed it in our Node class -->
+                                            </Style>
+                                            <DataTemplate x:Key="NormalTemplate">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding UIFieldName}" Margin="3" x:Name="txtFieldName"/>
+                                                    <StackPanel.ContextMenu>
+                                                        <ContextMenu Name="myProjectChildMenu" DataContext="{Binding PlacementTarget,RelativeSource={RelativeSource Self}}">
+                                                            <MenuItem Header="Add UI Object" Command="{Binding DataContext.AddUIObjectCommand}" CommandParameter="{Binding}">
+                                                            </MenuItem>
+                                                        </ContextMenu>
+                                                    </StackPanel.ContextMenu>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </TreeView.Resources>
+
+                                        <TreeView.ItemTemplate >
+                                            <HierarchicalDataTemplate     ItemsSource="{Binding Children}">
+                                                <ContentPresenter Content="{Binding}">
+                                                    <ContentPresenter.Style>
+                                                        <Style TargetType="{x:Type ContentPresenter}">
+                                                            <Setter Property="ContentTemplate"   Value="{StaticResource NormalTemplate}"/>
+                                                            <Style.Triggers>
+                                                                <DataTrigger  Binding="{Binding IsNodeSelected,
+                                                                              RelativeSource={RelativeSource   FindAncestor,
+                                                                              AncestorType={x:Type TreeViewItem}}}"  Value="True">
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </ContentPresenter.Style>
+                                                </ContentPresenter>
+                                            </HierarchicalDataTemplate>
+                                        </TreeView.ItemTemplate>
+                                    </converters:ExtendedTreeView>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=SelectedFieldItem.UIFieldName}"  >
+                                    </TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="Action" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock    Text="{Binding TestStepFieldActionName}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <ComboBox  ItemsSource="{Binding Path=UIFieldActions,Mode=TwoWay}" 
+                                               SelectedItem="{Binding TestStepFieldActionName}"  >
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock  Text="{Binding}" />
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn Header="Value" Width="*" Binding="{Binding TestStepFieldActionValue}" />
+
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+
+    </DockPanel>
+</UserControl>

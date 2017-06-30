@@ -1,0 +1,395 @@
+﻿<UserControl x:Class="CommandTestAutomation.Views.ObjectRepositoryControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             xmlns:model="clr-namespace:CommandTestAutomation.Models"
+             xmlns:local="clr-namespace:CommandTestAutomation.ViewModels"
+             xmlns:models = "clr-namespace:CommandTestAutomation.Models"
+             xmlns:interfaces="clr-namespace:CommandTestAutomation.Interfaces"
+             xmlns:uControls="clr-namespace:CommandTestAutomation.Views"
+             xmlns:converters="clr-namespace:CommandTestAutomation.Helpers"
+             xmlns:myConverters="clr-namespace:CommandTestAutomation.Helpers">
+
+    <UserControl.Resources>
+
+        <converters:BindingProxy
+                 x:Key="DataContextProxy"
+                 Data="{Binding}" />
+       
+        <myConverters:EnumToStringConverter x:Key="EnumToStringConverter" />
+        <converters:PathConverter x:Key="iconConverter"/>
+        <converters:RowNumberConverter x:Key="rowToIndexConverter" />
+        <converters:ContextMenuConverter x:Key="contextMenuConverter" />
+        <converters:IsNullConverter x:Key="isNullConverter" />
+        <converters:INodeToVisibilityConverter x:Key="nodeToVisibilityConverter"/>
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding Key="F2" Command="{Binding EditNodeClickCommand}" />
+        <KeyBinding Key="Enter" Command="{Binding CommitEditClickCommand}" />
+    </UserControl.InputBindings>
+
+    <DockPanel>
+        <StackPanel Orientation="Horizontal">
+           <!-- Main OR Tree-->
+            <converters:ExtendedTreeView     ItemsSource="{Binding  Path=ObjectMapData,Mode=TwoWay}"
+                                             Width="200"  x:Name="myObjectTree" 
+                                             SelectedItem_ = "{Binding SelectedTestObjectTreeViewItem, Mode=TwoWay}">
+
+
+                <TreeView.Resources>
+                    <DataTemplate x:Key="NormalTemplate">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="16" Height="16" Margin="0,0,3,0" x:Name="iconTreeItem" />
+                            <TextBlock Text="{Binding NodeName, Mode=TwoWay}" />
+                        </StackPanel>
+
+                        <DataTemplate.Triggers>
+
+                            <DataTrigger Binding="{Binding Path=IsSelected,RelativeSource={RelativeSource AncestorType=TreeViewItem},
+                                    Converter={StaticResource isNullConverter}}" Value="False">
+                                <Setter TargetName="iconTreeItem" Property="Source">
+                                    <Setter.Value>
+                                        <Binding  Converter="{StaticResource iconConverter}">
+                                            <Binding.FallbackValue>
+                                                <ImageSource>
+                                                    ../Images/Unknown.png
+                                                </ImageSource>
+                                            </Binding.FallbackValue>
+                                        </Binding>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+
+                        </DataTemplate.Triggers>
+
+
+                    </DataTemplate>
+
+                    <DataTemplate x:Key="EditTemplate">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="16" Height="16" Margin="0,0,3,0" x:Name="iconTreeItem" />
+                            <TextBox Text="{Binding NodeName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" >
+                                <TextBox.InputBindings>
+                                    <KeyBinding Key="Enter" Command="{Binding CommitEditClickCommand,RelativeSource={RelativeSource AncestorType=TreeViewItem}}" />
+                                </TextBox.InputBindings>
+                            </TextBox>
+                        </StackPanel>
+                        <DataTemplate.Triggers>
+                            <!--<DataTrigger Binding="{Binding Path=NodeType}" Value="Element">-->
+                            <DataTrigger Binding="{Binding Path=IsInEditMode,RelativeSource={RelativeSource AncestorType=TreeViewItem},
+                                    Converter={StaticResource isNullConverter}}" Value="True">
+                                <Setter TargetName="iconTreeItem" Property="Source">
+                                    <Setter.Value>
+                                        <Binding Path="Name"  Converter="{StaticResource iconConverter}">
+                                            <Binding.FallbackValue>
+                                                <ImageSource>
+                                                    ../Images/Unknown.png
+                                                </ImageSource>
+                                            </Binding.FallbackValue>
+                                        </Binding>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+
+                    <!--  Begin Context Menu  -->
+                    <ContextMenu x:Key="RootMenu" Style="{StaticResource contextMenuStyle}">
+
+                        <MenuItem Command="{Binding Path=Data.AddProjectClickCommand, Source={StaticResource DataContextProxy}}" >
+                            <MenuItem.Header  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="16" Height="16" Margin ="0,0,3,0" Source="../Images/Project.png" />
+                                    <ContentPresenter Content="New Project" />
+                                </StackPanel>
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </ContextMenu>
+                    <ContextMenu x:Key="ProjectMenu" Style="{StaticResource contextMenuStyle}">
+                        <MenuItem Command="{Binding Path=Data.AddFolderClickCommand, Source={StaticResource DataContextProxy}}" >
+                            <MenuItem.Header  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="16" Height="16" Margin ="0,0,3,0" Source="../Images/AddFolder.png" />
+                                    <ContentPresenter Content="New Folder" />
+                                </StackPanel>
+                            </MenuItem.Header>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Command="{Binding Path=Data.EditNodeClickCommand, Source={StaticResource DataContextProxy}}" >
+                            <MenuItem.Header  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="16" Height="16" Margin ="0,0,3,0" Source="../Images/Edit.png" />
+                                    <ContentPresenter Content="Rename Project" />
+                                </StackPanel>
+                            </MenuItem.Header>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Command="{Binding Path=Data.DeleteNodeClickCommand, Source={StaticResource DataContextProxy}}" >
+                            <MenuItem.Header  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="16" Height="16" Margin ="0,0,3,0" Source="../Images/Delete.png" />
+                                    <ContentPresenter Content="Remove Project" />
+                                </StackPanel>
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </ContextMenu>
+                    <ContextMenu x:Key="FolderMenu" Style="{StaticResource contextMenuStyle}">
+                        <MenuItem Command="{Binding Path=Data.AddFolderClickCommand, Source={StaticResource DataContextProxy}}" >
+                            <MenuItem.Header  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="16" Height="16" Margin ="0,0,3,0" Source="../Images/AddFolder.png" />
+                                    <ContentPresenter Content="New Folder" />
+                                </StackPanel>
+                            </MenuItem.Header>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Command="{Binding Path=Data.AddUIObjectCommand, Source={StaticResource DataContextProxy}}" >
+                            <MenuItem.Header  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="16" Height="16" Margin ="0,0,3,0" Source="../Images/Field.png" />
+                                    <ContentPresenter Content="Add UIObject" />
+                                </StackPanel>
+                            </MenuItem.Header>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Command="{Binding Path=Data.EditNodeClickCommand, Source={StaticResource DataContextProxy}}" >
+                            <MenuItem.Header  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="16" Height="16" Margin ="0,0,3,0" Source="../Images/Edit.png" />
+                                    <ContentPresenter Content="Rename Folder" />
+                                </StackPanel>
+                            </MenuItem.Header>
+                        </MenuItem>
+
+                        <Separator/>
+                        <MenuItem Command="{Binding Path=Data.DeleteNodeClickCommand, Source={StaticResource DataContextProxy}}" >
+                            <MenuItem.Header  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="16" Height="16" Margin ="0,0,3,0" Source="../Images/Delete.png" />
+                                    <ContentPresenter Content="Remove Folder" />
+                                </StackPanel>
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </ContextMenu>
+                    <ContextMenu x:Key="UIObjectMenu" Style="{StaticResource contextMenuStyle}">
+                        <MenuItem Command="{Binding Path=Data.EditNodeClickCommand, Source={StaticResource DataContextProxy}}" >
+                            <MenuItem.Header  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="16" Height="16" Margin ="0,0,3,0" Source="../Images/Edit.png" />
+                                    <ContentPresenter Content="Rename UIObject" />
+                                </StackPanel>
+                            </MenuItem.Header>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Command="{Binding Path=Data.DeleteNodeClickCommand, Source={StaticResource DataContextProxy}}" >
+                            <MenuItem.Header  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="16" Height="16" Margin ="0,0,3,0" Source="../Images/Delete.png" />
+                                    <ContentPresenter Content="Remove UIObject" />
+                                </StackPanel>
+                            </MenuItem.Header>
+                        </MenuItem>
+
+                    </ContextMenu>
+                    <converters:ContextMenuConverter x:Key="contextMenuConverter" 
+                                                     RootMenu="{StaticResource RootMenu}"
+                                                    ProjectMenu="{StaticResource ProjectMenu}"
+                                                    FolderMenu="{StaticResource FolderMenu}"
+                                                    UIObjectMenu="{StaticResource UIObjectMenu}"/>  
+                </TreeView.Resources>
+                <TreeView.ItemContainerStyle>
+                    <!--  This Style binds a TreeViewItem to a TreeViewItemViewModel. -->
+
+                    <Style TargetType="{x:Type TreeViewItem}">
+                        <Setter Property="ContextMenu" Value="{Binding Converter={StaticResource contextMenuConverter}}"/>
+                        <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                        <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                        <Setter Property="FontWeight" Value="Normal" />
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="FontWeight" Value="Bold" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TreeView.ItemContainerStyle>
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Children}" DataType="{x:Type interfaces:INode}">
+                        <ContentPresenter Content="{Binding}">
+                            <ContentPresenter.Style>
+                                <Style TargetType="{x:Type ContentPresenter}">
+                                    <Setter Property="ContentTemplate"  Value="{StaticResource   NormalTemplate}"/>
+                                    <Style.Triggers>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding IsInEditMode,Mode=TwoWay}" Value="True" />
+                                                <!--<Condition Binding="{Binding IsSelected,Mode=TwoWay}" Value="False" />-->
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="ContentTemplate" Value="{StaticResource EditTemplate}" />
+                                        </MultiDataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ContentPresenter.Style>
+                        </ContentPresenter>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </converters:ExtendedTreeView>
+            
+            <!--Display Selected treeview item ui comboboxes, name field and properties details......................  -->
+            <Grid DataContext="{Binding SelectedTestObjectTreeViewItem}" Visibility="{Binding Converter={StaticResource nodeToVisibilityConverter}}">
+               
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*" />
+                    <RowDefinition Height="2*" />                    
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Margin="5,0,0,0">
+                    <!-- environment type-->
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <TextBlock Height="23"   Text="Environment" VerticalAlignment="Top" Width="110" />
+                        
+                        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                AncestorType={x:Type UserControl}}, Path=DataContext.EnvironmentCollection}"    
+                                  SelectedItem="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                AncestorType={x:Type Grid}}, Path=DataContext.UIFieldEnvironmentType}"  
+                                Width="110"     
+                                 SelectedValue="{Binding  Path=UIFieldEnvironmentType,
+                                Converter={StaticResource  EnumToStringConverter}}"
+                                  >
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding}" Width="110" Height="23"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                  
+                    <!-- ui control type-->
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <TextBlock Height="23"   Text="Control Type" VerticalAlignment="Top" Width="110" />
+                        <ComboBox  
+                                   ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                    AncestorType={x:Type UserControl}}, Path=DataContext.UIFieldTypeCollection}"
+                              SelectedItem="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                AncestorType={x:Type Grid}}, Path=DataContext.UIFieldType}"  
+                                   SelectedValue="{Binding  Path=UIFieldType, Converter={StaticResource  EnumToStringConverter}}"
+                                   Width="110">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding}" Width="110" Height="23"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                   <!--Control Name-->
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0" >
+                        <TextBlock Height="23"   Text="Control Name" VerticalAlignment="Top" Width="110" />
+                        <TextBox Text="{Binding NodeName}" Height="23"   VerticalAlignment="Top" Width="222" />
+                    </StackPanel>
+                </StackPanel>
+               
+                <!-- Properties  table/grid list-->
+                <StackPanel  Grid.Row="1"  Margin="5,5,0,0">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="UI Object Properties:" Margin="0,20,0.333,5"/>
+                        <StackPanel>
+                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,75,0">
+                                
+                                <Button  x:Name="btnAddProperty" Height="20" Width="40"    Style="{StaticResource stlFlatButton}"
+                                 Command="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                    AncestorType={x:Type UserControl}}, Path=DataContext.AddPropertyClickCommand}" >
+                                    <Image Source="../Images/Add.png" />
+                                </Button>
+
+
+                                <Button  x:Name="btnRemoveProperty" Height="20" Width="40"    Style="{StaticResource stlFlatButton}"
+                                 Command="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                    AncestorType={x:Type UserControl}}, Path=DataContext.RemovePropertyClickCommand}"       >
+
+                                    <Image Source="../Images/Remove.png" />
+                                </Button>
+                                <Button  x:Name="btnSaveProperty" Height="20" Width="40"    Style="{StaticResource stlFlatButton}"
+                                 Command="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                    AncestorType={x:Type UserControl}}, Path=DataContext.SavePropertyClickCommand}"       >
+
+                                    <Image Source="../Images/Save.png" />
+                                </Button>
+
+                            </StackPanel>
+                       
+                            <!--Datagrid with uiproperty collection for selected uiobject-->
+                            <DataGrid x:Name="myPropCollection" CanUserDeleteRows="True" Width="900"
+                                  CanUserAddRows="False" CanUserResizeColumns="True" CanUserResizeRows="False"   
+                                   ItemsSource="{Binding ElementName=myObjectTree, Path=SelectedItem.UIFieldPropCollection,
+                                                Mode=TwoWay}"                                                         
+                                  SelectedItem="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                  AncestorType={x:Type UserControl}}, Path=DataContext.SelectedPropertyNameValue}"   
+                                  AutoGenerateColumns="False"                             
+                                  EnableRowVirtualization ="False"  Margin="0,2,0.333,-2.333">
+                                <DataGrid.RowHeaderStyle>
+                                    <Style TargetType="DataGridRowHeader">
+                                        <Setter Property="Width">
+                                            <Setter.Value>20</Setter.Value>
+                                        </Setter>
+                                        <Setter Property="Content">
+                                            <Setter.Value>
+                                                <MultiBinding Converter="{StaticResource rowToIndexConverter}">
+                                                    <Binding />
+                                                    <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}" />
+                                                </MultiBinding>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </DataGrid.RowHeaderStyle>
+                                <DataGrid.Columns>
+
+                                    <!--Property name coclumn-->
+                                    <DataGridTemplateColumn Header="Property" Width="*">
+                                       
+                                        <DataGridTemplateColumn.CellEditingTemplate>
+                                            <DataTemplate>                                        
+                                                <ComboBox  
+                                                     ItemsSource="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                                     AncestorType={x:Type UserControl}}, Path=DataContext.PropertyNameCollection}" 
+                                                     Width="200"  x:Name="xProperties" 
+                                                     SelectedItem ="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                                     AncestorType={x:Type Grid}}, Path=DataContext.PropertyName}" 
+                                                     SelectedValue="{Binding PropertyName}">
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock  Text="{Binding}" />
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
+                                                </ComboBox>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellEditingTemplate>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding PropertyName,Mode=TwoWay}"  >
+                                                </TextBlock>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                    <!--value name coclumn-->
+                                    <DataGridTextColumn Header="Value" Width="*" Binding="{Binding PropertyValue,Mode=TwoWay}" />
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </StackPanel>                    
+                </StackPanel>
+                
+            </Grid>
+        </StackPanel>
+    </DockPanel>
+        
+</UserControl>
